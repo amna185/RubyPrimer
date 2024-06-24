@@ -1,0 +1,16 @@
+module Foo
+  def method_in_module
+    "The method defined in the module invoked"
+  end
+end
+
+class Bar
+  def initialize
+  end
+end
+
+bar = Bar.new
+bar.extend Foo  # Extend bar with methods from Foo
+
+# Now you can call method_in_module on bar
+puts bar.method_in_module  # Outputs: "The method defined in the module invoked
