@@ -1,0 +1,39 @@
+users = [
+  {username: "aamnax114", password: "amna123"},
+  {username: "aamnax115", password: "amna1234"},
+  {username: "aamnax116", password: "amna12345"},
+  {username: "aamnax117", password: "amna123456"}
+  ]
+
+def user_auth(username, password, list_of_users)
+
+  list_of_users.each do |user_record|
+    if user_record[:username] == username && user_record[:password] == password
+      return user_record
+    end
+  end
+  "Credentials were incorrect"
+end
+
+puts "Welcome to the authenticator"
+25.times{print "-"}
+puts
+puts "This program will take input from you and give you the authentication"
+
+attempts = 1
+while attempts < 4
+puts "Enter your username"
+username = gets.chomp
+puts "Enter your password"
+password = gets.chomp
+
+authentication = user_auth(username, password, users)
+puts authentication
+
+puts "Press n to break or any other key to continue"
+input = gets.chomp
+break if input == "n"
+attempts += 1
+end
+
+puts "You have exceeded the number of attempts" if attempts == 4
